@@ -1,0 +1,8 @@
+{% extends 'main.html' %}
+{% block body %}
+<h1>دسته بندی ها</h1>
+    {% for cat in category %}
+       <a href="{% url 'home:category' cat.id %}">{{ cat.name }}</a><br>
+    {% endfor %}
+
+{% endblock %}

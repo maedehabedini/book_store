@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% block body %}
+    <form action="{% url 'home:product' %}" >
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">جست و جو</button>
+    </form>
+    {% for book in books %}
+        <h1> {{ book.title }}</h1>
+        <a href="{% url 'home:detail' book.id %}">
+            <img src="{{ book.image.url }}" style="width:200px">
+        </a><br>
+        {% if book.percent_discount or book.cash_discount %}
+            <h4 style="text-decoration:line-through ">{{ book.unit_price }}</h4>
+            <h3>{{ book.total_price }}</h3>
+        {% else %}
+            <h3>{{ book.total_price }}</h3>
+
+
+        {% endif %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'accounts/login.css' %}">{% endblock %}
+
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="user" placeholder="نام کاربری"><br><br>
+        <input type="password" name="password" placeholder="رمز عبور" ><br><br>
+        <button type="submit"> ورود </button>
+    </form>
+{% endblock %}

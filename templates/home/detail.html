@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block body %}
+    <h1>{{ book.title }}</h1>
+    <img style="width: 250px" src="{{ book.image.url }}"><br>
+    <h3>{{ book.unit_price }}</h3>
+    <div>
+        <form method="post" action="{% url 'cart:add_cart' book.id %}">
+            {% csrf_token %}
+            <input type="number" name="quantity" min="1" value="1" max="{{ book.inventory }}">
+            <button type="submit">اضافه کردن</button>
+
+        </form>
+
+    </div>
+
+{% endblock %}

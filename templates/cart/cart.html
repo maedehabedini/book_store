@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% block body %}
+    <h1>سبد خرید</h1>
+    <div class="container">
+
+        <table class="table table-dark">
+            <thead>
+            <th scope="col">شماره</th>
+            <th scope="col">عکس</th>
+            <th scope="col">کتاب</th>
+            <th scope="col">تعداد</th>
+            <th scope="col">قیمت</th>
+            <th scope="col">قیمت نهایی</th>
+            <th scope="col">حذف</th>
+            </thead>
+            <tbody>
+            {% for c in cart %}
+                <tr>
+                    <th scope="col">{{ forloop.counter }}</th>
+                    <td><img src="{{ c.book.image.url }}" style="width: 95px"</td>
+                    <td>{{ c.book.title }}</td>
+                    <td>{{ c.quantity }}</td>
+                    <td>{{ c.book.unit_price }}</td>
+                    <td>{% widthratio c.book.total_price 1 c.quantity %}</td>
+                    <td><a href="{% url 'cart:remove_cart' c.id  %}">حذف</a></td>
+                </tr>
+
+            {% endfor %}
+
+            <tr>
+                <td colspan="6">
+                    جمع کل
+                </td>
+                <td >
+                    {{ total }}
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+{% endblock body %}

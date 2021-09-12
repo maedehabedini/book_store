@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% block body %}
+    <h1>change password</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="password" name="old_password" placeholder="پسورد قدیمی"><br><br>
+        <input type="password" name="new_password1" placeholder="پسورد جدید"><br><br>
+        <input type="password" name="new_password2" placeholder="تکرار پسوورد جدید"><br><br>
+
+        <button type="submit">ثبت تغییرات</button>
+
+    </form>
+    <style>
+        form ul{
+            display: none;
+        }
+    </style>
+{% endblock body %}
